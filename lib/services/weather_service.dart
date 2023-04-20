@@ -8,7 +8,7 @@ class WeatherService{
   final String baseUrl = 'http://api.weatherapi.com/';
   final String apiKey = 'f3e25be4a1424ec5b48182556232004';
 
-  void getWeather({required String cityName}) async{
+  Future<WeatherModel> getWeather({required String cityName}) async{
     Uri url = Uri.parse('${baseUrl}v1/forecast.json?key=$apiKey&q=London&aqi=no');
     http.Response response = await http.get(url);
 
@@ -17,5 +17,7 @@ class WeatherService{
     if (kDebugMode) {
       print(w1.date);
     }
+
+    return w1;
   }
 }

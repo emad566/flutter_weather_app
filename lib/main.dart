@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather/providers/weather_provider.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 import 'pages/home_page.dart';
 
@@ -11,9 +13,14 @@ class WeatherApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomePage(),
+    return ChangeNotifierProvider(
+      create: (BuildContext context) {
+        return WeatherProvider();
+      },
+      child: const GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: HomePage(),
+      ),
     );
   }
 }

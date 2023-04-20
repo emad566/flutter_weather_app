@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/models/weather_model.dart';
 import 'package:flutter_weather/pages/search_page.dart';
+import 'package:flutter_weather/providers/weather_provider.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
-
-  WeatherModel? weatherData;
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    WeatherModel? weatherData = Provider.of<WeatherProvider>(context).weatherDate;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Weather App'),
@@ -23,6 +24,7 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
+      // ignore: unnecessary_null_comparison
       body: weatherData == null ? Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -48,7 +50,7 @@ class HomePage extends StatelessWidget {
        child: Column(
          mainAxisAlignment: MainAxisAlignment.center,
          children: [
-           Spacer(flex: 3,),
+           const Spacer(flex: 3,),
            const Text(
                'Cairo',
              style: TextStyle(
@@ -64,7 +66,7 @@ class HomePage extends StatelessWidget {
                fontWeight: FontWeight.bold,
              ),
            ),
-           Spacer(),
+           const Spacer(),
            Row(
              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
              children: [
@@ -85,7 +87,7 @@ class HomePage extends StatelessWidget {
                )
              ],
            ),
-           Spacer(),
+           const Spacer(),
            const Text(
              'Clear',
              style: TextStyle(
@@ -93,7 +95,7 @@ class HomePage extends StatelessWidget {
                fontWeight: FontWeight.bold,
              ),
            ),
-           Spacer(flex: 5,),
+           const Spacer(flex: 5,),
          ],
        ),
      )
