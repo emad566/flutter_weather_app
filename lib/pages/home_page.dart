@@ -51,17 +51,17 @@ class HomePage extends StatelessWidget {
          mainAxisAlignment: MainAxisAlignment.center,
          children: [
            const Spacer(flex: 3,),
-           const Text(
-               'Cairo',
-             style: TextStyle(
+           Text(
+             weatherData.cityName,
+             style: const TextStyle(
                fontSize: 32,
                fontWeight: FontWeight.bold,
              ),
            ),
            const SizedBox(height: 20,),
-           const Text(
-             'Updated at: 12-11-2023',
-             style: TextStyle(
+           Text(
+             weatherData.date,
+             style: const TextStyle(
                fontSize: 32,
                fontWeight: FontWeight.bold,
              ),
@@ -72,25 +72,25 @@ class HomePage extends StatelessWidget {
              children: [
                Image.asset('assets/images/clear.png'),
                const SizedBox(width: 10,),
-               const Text(
-                 '30',
-                 style: TextStyle(
+               Text(
+                 weatherData.temp.toInt().toString(),
+                 style: const TextStyle(
                    fontSize: 32,
                    fontWeight: FontWeight.bold,
                  ),
                ),
                Column(
-                 children: const [
-                   Text('Max Temp: 30'),
-                   Text('Min Temp: 27'),
+                 children: [
+                   Text('Max Temp: ${weatherData.maxTemp.toInt().toString()}'),
+                   Text('Min Temp: ${weatherData.minTemp.toInt().toString()}'),
                  ],
                )
              ],
            ),
            const Spacer(),
-           const Text(
-             'Clear',
-             style: TextStyle(
+           Text(
+             weatherData.weatherStateName,
+             style: const TextStyle(
                fontSize: 32,
                fontWeight: FontWeight.bold,
              ),
